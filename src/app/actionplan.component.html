@@ -1,0 +1,23 @@
+<div class="container">
+    <h1> Action Plan Builder</h1>
+    <!-- runbook -->
+    <div class="runbooks-container">
+        <h2>Available RunBooks</h2>
+        <div cdkDropList #runbookList="cdkDropList" [cdkDropListData]="availableRunBooks" [cdkDropListConnectedTo]="[actionPlanList]"
+        class="runbook-list" (cdkDropListDropped)="drop($event)">
+          <div class="runbook-box"  *ngFor = "let runbook of availableRunBooks" cdkDrag>{{runbook.name}}</div>
+      </div>
+    </div>
+
+    <!-- Action plan -->
+    <div class="action-plan-container">
+        <h2>Action Plan</h2>
+        <div cdkDropList #actionPlanList="cdkDropList" [cdkDropListData]="actionPlan" [cdkDropListConnectedTo]="[runbookList]"
+        class="runbook-list" (cdkDropListDropped)="drop($event)">
+          <div class="runbook-box"  *ngFor = "let runbook of actionPlan" cdkDrag>{{runbook.name}}
+            <button (click)="configureRunbook(runbook)">Configure</button>
+          </div>
+      </div>
+    </div>
+
+</div>
